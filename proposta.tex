@@ -1,0 +1,120 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{filecontents}
+\usepackage[noadjust]{cite}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{filecontents*}{bibi.bib}
+	
+     @ARTICLE{lee2005tarboard,
+   author = {Lee, Wonwoo and Woo, Woontack and Lee, Jongweon},
+   title = {Tarboard: Tangible augmented reality system for table-top game environment},
+   journal = {2nd International Workshop on Pervasive Gaming Applications, PerGamese},
+   year = {2005},
+   volume = {5},
+   pages = {0-4}
+   }
+   
+   @book{burdea2003virtual,
+   	title={Virtual Reality Technology},
+   	author={Burdea, G.C. and Coiffet, P.},
+   	number={v. 1},
+   	isbn={9780471360896},
+   	lccn={2002038088},
+   	series={Academic Search Complete},
+   	year={2003},
+   	publisher={Wiley}
+   }
+   
+   @inproceedings{Lam:2006:AAR:1128923.1128987,
+   	author = {Lam, Albert H. T. and Chow, Kevin C. H. and Yau, Edward H. H. and Lyu, Michael R.},
+   	title = {ART: Augmented Reality Table for Interactive Trading Card Game},
+   	booktitle = {Proceedings of the 2006 ACM International Conference on Virtual Reality Continuum and Its Applications},
+   	series = {VRCIA '06},
+   	year = {2006},
+   	isbn = {1-59593-324-7},
+   	location = {Hong Kong, China},
+   	pages = {357--360},
+   	numpages = {4},
+   	url = {http://doi.acm.org/10.1145/1128923.1128987},
+   	doi = {10.1145/1128923.1128987},
+   	acmid = {1128987},
+   	publisher = {ACM},
+   	address = {New York, NY, USA},
+   	keywords = {augmented reality, card game environment, computer entertainment},
+   } 
+   
+   @misc{magic,
+   	title = {Magic: The Gathering},
+   	howpublished = {\url{http://magic.wizards.com/pt-br}},
+   	note = {Accessed: 2015-09-15}
+   }
+   
+   @misc{magic_duels,
+   	title = {Magic Duels},
+   	howpublished = {\url{http://magic.wizards.com/content/magic-duels}},
+   	note = {Accessed: 2015-09-15}
+   }
+\end{filecontents*}
+
+\hyphenation{op-tical net-works semi-conduc-tor}    
+
+\title{Jogo de Cartas Remoto em Realidade Aumentada}
+
+\author{Vítor de Albuquerque Torreão}
+
+
+\markboth{Disciplina de Realidade Virtual, Setembro~2015}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	Os jogos do mundo real e virtual possuem suas próprias vantagens distintas. A 
+	realidade aumentada nos permite combinar o melhor dos dois mundos e criar novas 
+	formas de jogar. Esta proposta pretende introduzir o ARCGP (Plataforma para 
+	jogos de cartas com realidade aumentada). A ideia é prover aos jogadores a 
+	experiência dos jogos originais, porém com a possibilidade de jogar remotamente, 
+	sem ter de sentar à frente do computador e com baixo custo, sem necessidade de 
+	câmeras, mesas vidradas, espelho ou televisores.
+\end{abstract}
+
+\begin{IEEEkeywords}
+	Realidade Aumentada, Entretenimento.
+\end{IEEEkeywords}
+
+\section{Introdução}
+Realidade misturada combina os conteúdos do mundo real com a imaginação virtual.
+A realidade aumentada (AR) é um subconjunto da realidade misturada, onde o 
+conteúdo digital são sobrepostos aos objetos reais do mundo. Aplicações de 
+realidade aumentada suplementam o mundo real com objetos virtuais, de forma que 
+o conteúdo gerado pelo computador é adicionado ao ambiente real de forma 
+interativa e em tempo real \cite{burdea2003virtual}.
+
+Essas propriedades da realidade aumentada provêm melhorias fascinantes para os 
+jogos do mundo real, fazendo-os mais agradáveis e atrativos 
+\cite{Lam:2006:AAR:1128923.1128987}. Jogos de cartas são exemplos de jogos que 
+podem usufruir das vantagens da Realidade Aumentada. Jogos, como \textit{Magic: 
+The Gathering} \cite{magic}, precisam de, no mínimo, dois jogadores. Mas não é 
+sempre fácil reunir-se com outras pessoas para jogar, de forma que uma 
+plataforma que permitisse a dois jogadores disputar uma partida de forma 
+remota criaria mais oportunidades de jogo.
+
+Já houveram implementações de \textit{Magic} para computador e dispositivos 
+móveis \cite{magic_duels}. No entanto, as plataformas nos quais essas 
+aplicações estão disponíveis quebram  a familiaridade do jogador com a forma 
+de jogar com a qual está acostumado.
+
+A plataforma hipotética deveria então, manter elementos das partidas de forma 
+que o jogador tivesse a impressão de estar jogando o mesmo jogo, da mesma forma.
+
+\section{Conclusion}
+The conclusion goes here.
+
+\section*{Acknowledgment}
+We acknowledge the acknowledged acknowledgees.
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibi}
+\end{document}
