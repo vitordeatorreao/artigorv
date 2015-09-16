@@ -43,6 +43,23 @@
    	keywords = {augmented reality, card game environment, computer entertainment},
    } 
    
+   @inproceedings{Szalavari:1998:CGA:293701.293740,
+   	author = {Szalav\'{a}ri, Zsolt and Eckstein, Erik and Gervautz, Michael},
+   	title = {Collaborative Gaming in Augmented Reality},
+   	booktitle = {Proceedings of the ACM Symposium on Virtual Reality Software and Technology},
+   	series = {VRST '98},
+   	year = {1998},
+   	isbn = {1-58113-019-8},
+   	location = {Taipei, Taiwan},
+   	pages = {195--204},
+   	numpages = {10},
+   	doi = {10.1145/293701.293740},
+   	acmid = {293740},
+   	publisher = {ACM},
+   	address = {New York, NY, USA},
+   	keywords = {CSCW, augmented reality, interaction, virtual gaming},
+   } 
+   
    @misc{magic,
    	title = {Magic: The Gathering},
    	howpublished = {\url{http://magic.wizards.com/pt-br}},
@@ -127,12 +144,13 @@ Game Platform}) para jogos de cartas. A plataforma consistirá em uma aplicaçã
 Unity \cite{unity} utilizando a API do Vuforia \cite{vuforia}. 
 
 Este artigo está estruturado da seguinte forma: na sessão \ref{rel} serão 
-apresentados trabalhos relacionados; na sessão \ref{plataforma}, será 
-exposta a plataforma, tal como foi idealizada; na sessão \ref{metodologia} será 
-apresentada a metodologia a ser utilizada no desenvolvimento da plataforma; na 
-sessão \ref{cronograma} será descrito o cronograma a ser seguido para o 
-desenvolvimento; por fim, a sessão \ref{conclusao} trás algumas considerações 
-finais sobre o projeto.
+apresentados trabalhos relacionados; na sessão \ref{objetivo}, serão expostos os 
+objetivos da plataforma, tal como foi idealizada; na sessão \ref{metodologia} 
+será apresentada a metodologia a ser utilizada no desenvolvimento da plataforma; 
+na sessão \ref{resultados_esperados}, serão apontados os resultados esperados 
+neste projeto; na sessão \ref{cronograma} será descrito o cronograma a ser 
+seguido para o desenvolvimento; por fim, a sessão \ref{conclusao} trás algumas 
+considerações finais sobre o projeto.
 
 \section{Trabalhos Relacionados}
 \label{rel}
@@ -141,6 +159,25 @@ trabalham em cima do cenário onde dois jogadores estão no mesmo ambiente e foc
 trazer a imaginação do jogador para a realidade através da sobreposição de 
 objetos virtuais. As plataformas propostas, no entanto, requerem um hardware 
 específico e, muitas vezes, de alto custo.
+
+Em \cite{Szalavari:1998:CGA:293701.293740}, os pesquisadores montaram um sistema 
+de realidade aumentada para jogadores compartilharem um ambiente virtual onde 
+jogam \textit{Mah-Jongg}. Os objetivos do sistema desenvolvido por eles é 
+aplicar realidade aumentada para melhorar a experiência do usuário mantendo os 
+aspectos da interação social e privacidade. O sistema consiste de um 
+\textit{head mounted display} e um painel de interação pessoal para cada 
+jogador.
+
+O TARBoard \cite{lee2005tarboard} é um sistema que utiliza a realidade aumentada 
+e a interface de usuário tangível para melhorar a experiência do usuário nos 
+jogos de cartas e de tabuleiro em geral. O TARBoard consiste de uma mesa de 
+vidro, duas câmeras e um espelho. Marcadores são colocados embaixo dos objetos 
+e/ou cartas do jogo. Uma das câmeras fica posicionada embaixo da mesa e rastreia 
+os marcadores. A segunda câmera provê imagens para aumentar os objetos virtuais. 
+Os usuários veem os objetos virtuais no \textit{stream} de vídeo das câmeras.
+
+O objetivo do TARBoard é bem diferente do ARCGP, pois ele pretende melhorar a 
+experiência tradicional do jogo sem, no entanto, substituí-la como o ARCGP.
 
 O ART (\textit{Augmented Reality Table}) \cite{Lam:2006:AAR:1128923.1128987} é 
 uma plataforma que usa a tecnologia da realidade aumentada para prover uma mesa 
@@ -160,15 +197,24 @@ posicionar a câmera de forma a capturar os eventos da mesa, posicionar o monito
 corretamente e conectar ambos ao computador. Por fim, esses equipamentos 
 possuem um custo elevado para os jogadores.
 
-O TARBoard \cite{lee2005tarboard}
+\section{Objetivo}
+\label{objetivo}
+O objetivo do projeto ARCGP é utilizar o Unity e o Vuforia criar uma plataforma 
+de realidade aumentada onde dois jogadores possam disputar uma partida de um 
+jogo de cartas sem a necessidade de estarem no mesmo ambiente. ARCGP deve 
+reconhecer as cartas em jogo no tabuleiro de um jogador e reproduzi-las através 
+de objetos virtuais para o oponente.
 
-\section{Plataforma}
-\label{plataforma}
-Aqui vai sobre a plataforma
+O ARCGP deve ser uma plataforma simples, que ocupe pouco espaço físico, que não 
+apresente um esforço desnecessário de montagem e que seja de baixo custo.
 
 \section{Metodologia}
 \label{metodologia}
 Aqui vai a metodologia
+
+\section{Resultados Esperados}
+\label{resultados_esperados}
+Aqui vão os resultados esperados
 
 \section{Cronograma}
 \label{cronograma}
@@ -176,7 +222,7 @@ Aqui vai o cronograma
 
 \section{Conclusão}
 \label{conclusao}
-The conclusion goes here.
+Aqui vai a conclusão
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibi}
