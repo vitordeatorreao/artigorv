@@ -83,6 +83,18 @@
    	howpublished = {\url{https://developer.vuforia.com/}},
    	note = {Accessed: 2015-09-16}
    }
+   
+   @misc{csharp,
+   	title = "Guia de Programação em {C}{\#}",
+   	howpublished = {\url{https://msdn.microsoft.com/pt-br/library/67ef8sbd.aspx}},
+   	note = {Accessed: 2015-09-16}
+   }
+   
+   @misc{magic_cards,
+   	title = "MagicCards.info",
+   	howpublished = {\url{http://magiccards.info/}},
+   	note = {Accessed: 2015-09-16}
+   }
 \end{filecontents*}
 
 \hyphenation{op-tical net-works semi-conduc-tor}    
@@ -143,14 +155,42 @@ Neste artigo será proposta a plataforma ARCGP (\textit{Augmented Reality Card
 Game Platform}) para jogos de cartas. A plataforma consistirá em uma aplicação 
 Unity \cite{unity} utilizando a API do Vuforia \cite{vuforia}. 
 
-Este artigo está estruturado da seguinte forma: na sessão \ref{rel} serão 
-apresentados trabalhos relacionados; na sessão \ref{objetivo}, serão expostos os 
-objetivos da plataforma, tal como foi idealizada; na sessão \ref{metodologia} 
+Este artigo está estruturado da seguinte forma: na sessão \ref{objetivo}, serão 
+expostos os objetivos da plataforma, tal como foi idealizada; na sessão 
+\ref{rel} serão apresentados trabalhos relacionados; na sessão \ref{metodologia} 
 será apresentada a metodologia a ser utilizada no desenvolvimento da plataforma; 
 na sessão \ref{resultados_esperados}, serão apontados os resultados esperados 
 neste projeto; na sessão \ref{cronograma} será descrito o cronograma a ser 
 seguido para o desenvolvimento; por fim, a sessão \ref{conclusao} trás algumas 
 considerações finais sobre o projeto.
+
+\section{Objetivo}
+\label{objetivo}
+O objetivo do projeto ARCGP é utilizar o Unity e o Vuforia criar uma plataforma 
+de realidade aumentada onde dois jogadores possam disputar uma partida de um 
+jogo de cartas sem a necessidade de estarem no mesmo ambiente. ARCGP deve 
+reconhecer as cartas em jogo no tabuleiro de um jogador e reproduzi-las através 
+de objetos virtuais para o oponente.
+
+O ARCGP deve ser uma plataforma simples, que ocupe pouco espaço físico, que não 
+apresente um esforço desnecessário de montagem e que seja de baixo custo.
+
+Como o Vuforia não consegue rastrear mais do que cinco alvos de imagem, serão 
+utilizados marcadores. Os jogadores terão de registrar suas cartas previamentem, 
+momento no qual será feito mapeamento entre as cartas e os identificadores de 
+marcadores disponíveis no Vuforia.
+
+Uma imagem será selecionada como alvo para um \textit{extended tracking} 
+(rastreamento extendido, em português) e será colocada por cada jogador na sua 
+mesa de jogo.
+
+A aplicação deverá ser capaz de se conectar ao dispositivo do adversário. E, a 
+partir de então, deverá rastrear os marcadores e exibir para o jogador a imagem 
+da carta mapeana no identificador do marcador em questão. Quando este marcador 
+for colocado sobre a mesa de jogo, o ARCGP deverá exibir a imagem da carta para 
+o jogador, ao mesmo tempo que envia os dados da carta e sua posição em relação 
+ao marcador da mesa para o dispositivo do adversário, que irá, por sua vez, 
+transladar e rotacionar a carta para exibí-la corretamente.
 
 \section{Trabalhos Relacionados}
 \label{rel}
@@ -165,8 +205,18 @@ de realidade aumentada para jogadores compartilharem um ambiente virtual onde
 jogam \textit{Mah-Jongg}. Os objetivos do sistema desenvolvido por eles é 
 aplicar realidade aumentada para melhorar a experiência do usuário mantendo os 
 aspectos da interação social e privacidade. O sistema consiste de um 
-\textit{head mounted display} e um painel de interação pessoal para cada 
-jogador.
+\textit{head mounted display} (HMD) e um painel de interação pessoal para cada 
+jogador, além de um servidor que roda a simulação do jogo. O HMD não bloqueia 
+totalmente a visão do ambiente, permitindo a um jogador se comunicar com o outro 
+através de gestos, e os elementos virtuais exibidos no HMD permitem que cada 
+usuário tenho uma visão diferente do jogo, garantindo a privacidade.
+
+Assim, \cite{Szalavari:1998:CGA:293701.293740} apresenta um sistema com uma 
+aplicação diferente da plataforma proposta neste artigo já que ele visa simular 
+um jogo de mesa e exibi-lo aos jogadores por meio de realidade aumentada, 
+enquanto que neste projeto a realidade aumentada é utilizada para permitir que 
+jogadores distantes possam jogar como se estivessem no mesmo ambiente, sem 
+necessidade de simular o jogo em computador.
 
 O TARBoard \cite{lee2005tarboard} é um sistema que utiliza a realidade aumentada 
 e a interface de usuário tangível para melhorar a experiência do usuário nos 
@@ -197,24 +247,38 @@ posicionar a câmera de forma a capturar os eventos da mesa, posicionar o monito
 corretamente e conectar ambos ao computador. Por fim, esses equipamentos 
 possuem um custo elevado para os jogadores.
 
-\section{Objetivo}
-\label{objetivo}
-O objetivo do projeto ARCGP é utilizar o Unity e o Vuforia criar uma plataforma 
-de realidade aumentada onde dois jogadores possam disputar uma partida de um 
-jogo de cartas sem a necessidade de estarem no mesmo ambiente. ARCGP deve 
-reconhecer as cartas em jogo no tabuleiro de um jogador e reproduzi-las através 
-de objetos virtuais para o oponente.
-
-O ARCGP deve ser uma plataforma simples, que ocupe pouco espaço físico, que não 
-apresente um esforço desnecessário de montagem e que seja de baixo custo.
-
 \section{Metodologia}
 \label{metodologia}
-Aqui vai a metodologia
+Para desenvolver essa plataforma será utilizado o jogo \textit{Magic: The 
+Gathering} como exemplo. 
+
+Primeiramente, será necessário um estudo aprofundado do Unity, da lingaugem de 
+programação C\# \cite{csharp} e do Vuforia para, depois, montar uma arquitetura 
+viável para a aplicação.
+
+Em seguida, será necessário criar um banco de dados para testes com algumas 
+cartas. Existem diversos \textit{websites} que disponibilizam imagens de cartas, 
+como por exemplo, \cite{magic_cards}.
+
+Depois, será escolhida uma imagem que servirá como alvo para um \textit{extended 
+tracking} (rastreamento extendido, em português), um jogador que deseja utilizar 
+o ARCGP deverá fazer o \textit{download}, imprimir e posicionar essa imagem onde 
+ele deseja que seja o campo de jogo.
+
+A partir de então, a aplicação será desenvolvida de acordo com os requisitos 
+explanados na sessão \ref{objetivo}.
+
+No decorrer e após essa etapa, serão feitos testes com dois jogadores para 
+verificar a funcionalidade da ferramenta.
+
+Por fim, a ferramenta será apresentada à comunidade.
 
 \section{Resultados Esperados}
 \label{resultados_esperados}
-Aqui vão os resultados esperados
+Espera-se que, ao final do projeto, esteja desenvolvida uma aplicação capaz de 
+auxiliar dois jogadores a jogar um jogo de cartas mesmo que estejam fisicamente 
+distantes um do outro. A experiência do jogador deverá lembrar, o máximo 
+possível, sua equivalente no mundo real.
 
 \section{Cronograma}
 \label{cronograma}
@@ -222,7 +286,12 @@ Aqui vai o cronograma
 
 \section{Conclusão}
 \label{conclusao}
-Aqui vai a conclusão
+Neste artigo, foi descrito o projeto da Plataforma para Jogos de Cartas com 
+Realidade Aumentada. Foram explicitados seus objetivos, metodologia, resultados 
+esperados e o cronograma para conclusão do projeto.
+
+Além disso, foram levantados alguns trabalhos com matérias parecidas e foram 
+esclarecidas as diferentes entre eles e o ARCGP.
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibi}
