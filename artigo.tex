@@ -103,6 +103,13 @@
    	note = {Accessed: 2015-09-16}
    }
    
+   @misc{joao,
+   	title = {Artoolkit and Magic the Gathering},
+   	howpublished = {\url{https://youtu.be/tpZI1Z-k88Y}},
+   	author = {João Batalha},
+   	note = {Accessed: 2015-11-16}
+   }
+   
    @misc{csharp,
    	title = "Guia de Programação em {C}{\#}",
    	howpublished = {\url{https://msdn.microsoft.com/pt-br/library/67ef8sbd.aspx}},
@@ -167,8 +174,14 @@ móveis \cite{magic_duels}. No entanto, as plataformas nos quais essas
 aplicações estão disponíveis quebram  a familiaridade do jogador com a forma 
 de jogar com a qual está acostumado.
 
+Outras implementações, tais como \cite{joao}, embora mantenham a forma 
+tradicional do jogo, necessitam que os dois jogadores estejam no mesmo local 
+físico, não os permitindo jogar de forma remota.
+
 A plataforma deveria, então, manter elementos das partidas reais de forma 
-que o jogador tivesse a impressão de estar jogando o mesmo jogo, da mesma forma.
+que o jogador tivesse a impressão de estar jogando o mesmo jogo, da mesma forma, 
+mas eleminar o requisito de deslocamento e compartilhamento do mesmo ambiente 
+real.
 
 Portanto, neste artigo será proposta a plataforma ARCGP (\textit{Augmented 
 Reality Card Game Platform}). A plataforma consistirá em uma aplicação 
@@ -239,7 +252,7 @@ capaz de permitir a dois jogadores jogarem uma partida do jogo \textit{Magic:
 The Gathering}. A aplicação checa se as jogadas são permitidas pela regra, 
 controla os turnos do jogo e exibe gráficos 3D dos personagens de cada carta 
 como um objeto virtual sobreposto à cena real. No entanto, a aplicação necessita 
-que os jogadores estejam no mesmo local físico.
+que os jogadores estejam no mesmo local físico \cite{joao}.
 
 Em \cite{Szalavari:1998:CGA:293701.293740}, os pesquisadores montaram um sistema 
 de realidade aumentada para jogadores compartilharem um ambiente virtual onde 
