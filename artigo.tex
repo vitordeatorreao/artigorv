@@ -72,10 +72,22 @@
    	note = {Accessed: 2015-09-15}
    }
    
+   @misc{3ds,
+   	title = {Nintendo AR Games},
+   	howpublished = {\url{http://www.nintendo.com/3ds/ar-cards}},
+   	note = {Accessed: 2015-11-15}
+   }
+   
    @misc{unity,
    	title = {Unity - Game Engine},
    	howpublished = {\url{http://unity3d.com/pt/}},
    	note = {Accessed: 2015-09-16}
+   }
+   
+   @misc{eyesony,
+   	title = {Sony's The Eye of Judgement},
+   	howpublished = {\url{https://en.wikipedia.org/wiki/The\_Eye\_of\_Judgment}},
+   	note = {Accessed: 2015-11-15}
    }
    
    @misc{vuforia,
@@ -138,7 +150,7 @@ Essas propriedades da realidade aumentada provêm melhorias fascinantes para os
 jogos do mundo real, fazendo-os mais agradáveis e atrativos 
 \cite{Lam:2006:AAR:1128923.1128987}. Jogos de cartas são exemplos de jogos que 
 podem usufruir das vantagens da Realidade Aumentada. Jogos, como \textit{Magic: 
-The Gathering} \cite{magic}, precisam de, no mínimo, dois jogadores. Mas não é 
+The Gathering} \cite{magic}, precisam de, no mínimo, dois jogadores, mas não é 
 sempre fácil reunir-se com outras pessoas para jogar, de forma que uma 
 plataforma que permitisse a dois jogadores disputar uma partida de forma 
 remota criaria mais oportunidades de jogo.
@@ -148,11 +160,11 @@ móveis \cite{magic_duels}. No entanto, as plataformas nos quais essas
 aplicações estão disponíveis quebram  a familiaridade do jogador com a forma 
 de jogar com a qual está acostumado.
 
-A plataforma hipotética deveria então, manter elementos das partidas de forma 
+A plataforma deveria, então, manter elementos das partidas reais de forma 
 que o jogador tivesse a impressão de estar jogando o mesmo jogo, da mesma forma.
 
-Neste artigo será proposta a plataforma ARCGP (\textit{Augmented Reality Card 
-Game Platform}). A plataforma consistirá em uma aplicação 
+Portanto, neste artigo será proposta a plataforma ARCGP (\textit{Augmented 
+Reality Card Game Platform}). A plataforma consistirá em uma aplicação 
 Unity \cite{unity} utilizando a API do Vuforia \cite{vuforia}. 
 
 \subsection{Objetivo}
@@ -193,11 +205,34 @@ considerações finais sobre o projeto.
 
 \section{Trabalhos Relacionados}
 \label{rel}
-Os trabalhos realizados envolvendo jogos de cartas com realidade aumentada 
+Utilizar realidade aumentada em jogos eletrônicos não é novidade. Isso vem sendo 
+feito nos \textit{consoles} e portáteis da Sony e da Nintendo, por exemplo.
+
+Por parte da Sony se tem o \textit{Eye of Judgement} \cite{eyesony}, para 
+\textit{Playstation 3}, que se trata de um jogo de cartas original criado pela 
+produtora. O jogo se vale do \textit{Playstation Eye} para capturar a cena real 
+e utiliza o próprio console para fazer os cálculos de rastreamento. Os jogadores 
+podem jogar de forma remota, online, ou em um \textit{multiplayer} presencial. 
+Deve-se notar que não é possível jogar outros jogos de cartas com esse recurso.
+
+Já a Nintendo lançou o \textit{AR Games} \cite{3ds} que é uma compilação de 
+mini-jogos e ferramentas simples que vêm pré-instaladas no portátil Nintendo 
+3DS. Junto vêm seis cartas, cinco delas com os principais personagens da 
+produtora e uma com uma interrogação. Essas cartas podem ser utilizadas por 
+diferentes jogos para incrementar a experiência do usuário.
+
+Outros trabalhos realizados envolvendo jogos de cartas com realidade aumentada 
 trabalham em cima do cenário onde dois jogadores estão no mesmo ambiente e focam 
 trazer a imaginação do jogador para a realidade através da sobreposição de 
 objetos virtuais. As plataformas propostas, no entanto, requerem um hardware 
 específico e, muitas vezes, de alto custo.
+
+O desenvolvedor João Batalha implementou uma aplicação de realidade aumentada 
+capaz de permitir a dois jogadores jogarem uma partida do jogo \textit{Magic: 
+The Gathering}. A aplicação checa se as jogadas são permitidas pela regra, 
+controla os turnos do jogo e exibe gráficos 3D dos personagens de cada carta 
+como um objeto virtual sobreposto à cena real. No entanto, a aplicação necessita 
+que os jogadores estejam no mesmo local físico.
 
 Em \cite{Szalavari:1998:CGA:293701.293740}, os pesquisadores montaram um sistema 
 de realidade aumentada para jogadores compartilharem um ambiente virtual onde 
