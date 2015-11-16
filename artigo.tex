@@ -3,6 +3,7 @@
 \usepackage[noadjust]{cite}
 \usepackage[portuguese]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{url}
 
 \begin{filecontents*}{bibi.bib}
 	
@@ -66,6 +67,12 @@
    	note = {Accessed: 2015-09-15}
    }
    
+   @misc{protour,
+   	title = {Magic Origins Pro Tour - Top 8 decklists},
+   	howpublished = {\url{http://magic.wizards.com/en/events/coverage/ptori/top-8-decklists-2015-08-01}},
+   	note = {Accessed: 2015-11-16}
+   }
+   
    @misc{magic_duels,
    	title = {Magic Duels},
    	howpublished = {\url{http://magic.wizards.com/content/magic-duels}},
@@ -86,7 +93,7 @@
    
    @misc{eyesony,
    	title = {Sony's The Eye of Judgement},
-   	howpublished = {\url{https://en.wikipedia.org/wiki/The\_Eye\_of\_Judgment}},
+   	howpublished = {\url{https://en.wikipedia.org/wiki/The_Eye_of_Judgment}},
    	note = {Accessed: 2015-11-15}
    }
    
@@ -197,11 +204,11 @@ transladar e rotacionar a carta para exibi-la corretamente.
 
 Este artigo está estruturado da seguinte forma: na sessão \ref{rel} serão 
 apresentados trabalhos relacionados; na sessão \ref{metodologia} será 
-apresentada a metodologia a ser utilizada no desenvolvimento da plataforma; na 
-sessão \ref{resultados_esperados}, serão apontados os resultados esperados 
-neste projeto; na sessão \ref{cronograma} será descrito o cronograma a ser 
-seguido para o desenvolvimento; por fim, a sessão \ref{conclusao} trás algumas 
-considerações finais sobre o projeto.
+apresentada a metodologia utilizada no desenvolvimento da plataforma; na 
+sessão \ref{plataforma}, a plataforma propriamente dita será apresentada em 
+detalhes; em seguida, a sessão \ref{conclusao} trás algumas considerações finais 
+sobre o projeto; por fim, a sessão \ref{trab_fut} trás alguns trabalhos futuros 
+para serem realizados em cima da ARCGP.
 
 \section{Trabalhos Relacionados}
 \label{rel}
@@ -286,47 +293,41 @@ possuem um custo elevado para os jogadores.
 Para desenvolver essa plataforma será utilizado o jogo \textit{Magic: The 
 Gathering} como exemplo. 
 
-Primeiramente, será necessário um estudo aprofundado do Unity, da linguagem de 
-programação C\# \cite{csharp} e do Vuforia para, depois, montar uma arquitetura 
-viável para a aplicação.
+Primeiramente, foi realizado um estudo aprofundado do Unity, da linguagem de 
+programação C\# \cite{csharp} e do Vuforia. Após essa etapa, foi elaborada a 
+arquitetura necessária para tornar a aplicação viável.
 
-Em seguida, será necessário criar um banco de dados para testes com algumas 
+Em seguida, foi necessário criar um banco de dados para testes com algumas 
 cartas. Existem diversos \textit{websites} que disponibilizam imagens de cartas, 
-como por exemplo, \cite{magic_cards}.
+como por exemplo, \cite{magic_cards}. Foram montados dois \textit{decks} para 
+os testes, ambos oriundos do \textit{Pro Tour Magic Origins}. Foram 
+selecionados os \textit{decks} do campeão e do vice, Joel Larsson e Mike Sigrist 
+\cite{protour}.
 
-Depois, será escolhida uma imagem que servirá como alvo para um \textit{extended 
-tracking} (rastreamento estendido, em português), um jogador que deseja utilizar 
-o ARCGP deverá fazer o \textit{download}, imprimir e posicionar essa imagem onde 
-ele deseja que seja o campo de jogo.
+Depois, a aplicação propriamente dita foi desenvolvida utilizando as ferramentas 
+mencionadas e de acordo com os requisitos explanados na sessão \ref{objetivo}.
+O primeiro passo para o desenvolvimento da aplicação foi o desenvolvimento de 
+um \textit{script} C\# que preparasse as instâncias da aplicação para se 
+conectarem e trocarem mensagens. O segundo foi a preparação de um 
+\textit{script}, novamente na linguagem C\#, que modificasse a cena adicionando 
+os \textit{frame markers} e suas respectivas cartas. O terceiro passo foi o 
+desenvolvimento do esquema de comunicação para que uma instância comunicasse a 
+outra quais cartas foram colocadas em jogo pelo seu jogador e quais cartas foram 
+removidas de jogo.
 
-A partir de então, a aplicação será desenvolvida de acordo com os requisitos 
-explanados na sessão \ref{objetivo}.
+No decorrer e após essa etapa, foram feitos diversos testes com dois jogadores 
+para verificar a funcionalidade da ferramenta e se os requisitos foram 
+satisfeitos.
 
-No decorrer e após essa etapa, serão feitos testes com dois jogadores para 
-verificar a funcionalidade da ferramenta.
+Por fim, a ferramenta foi apresentada à comunidade através da redação deste 
+artigo.
 
-Por fim, a ferramenta será apresentada à comunidade através de um novo artigo.
-
-\section{Resultados Esperados}
-\label{resultados_esperados}
+\section{A plataforma}
+\label{plataforma}
 Espera-se que, ao final do projeto, esteja desenvolvida uma aplicação capaz de 
 auxiliar dois jogadores a jogar um jogo de cartas mesmo que estejam fisicamente 
 distantes um do outro. A experiência do jogador deverá lembrar, o máximo 
 possível, sua equivalente no mundo real.
-
-\section{Cronograma}
-\label{cronograma}
-De 23 de setembro de 2015 a 1 de Outubro de 2015, criação de banco de dados 
-com pelo menos dois \textit{decks} completos de cartas para testes e seleção de 
-uma figura adequada para o rastreamento estendido da mesa de jogo.
-De 23 de Setembro de 2015 a 8 de Outubro de 2015, estudo de Unity, Vuforia e 
-C\#.
-De 8 de Outubro de 2015 a 22 de Outubro de 2015, desenvolvimento da aplicação 
-ARCGP.
-De 23 de Outubro de 2015 a 5 de Novembro de 2015, testes e refatoração da 
-aplicação para encorporar ajustes.
-De 5 de Novembro de 2015 a 17 de Novembro de 2015, escrita do artigo técnico de 
-apresentação da aplicação.
 
 \section{Conclusão}
 \label{conclusao}
@@ -336,6 +337,10 @@ esperados e o cronograma para conclusão do projeto.
 
 Além disso, foram levantados alguns trabalhos com matérias parecidas e foram 
 esclarecidas as diferentes entre eles e o ARCGP.
+
+\section{Trabalhos Futuros}
+\label{trab_fut}
+Aqui são apresentados alguns trabalhos.
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibi}
