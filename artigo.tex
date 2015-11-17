@@ -3,6 +3,7 @@
 \usepackage[noadjust]{cite}
 \usepackage[portuguese]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 \usepackage{url}
 
 \begin{filecontents*}{bibi.bib}
@@ -180,7 +181,7 @@ físico, não os permitindo jogar de forma remota.
 
 A plataforma deveria, então, manter elementos das partidas reais de forma 
 que o jogador tivesse a impressão de estar jogando o mesmo jogo, da mesma forma, 
-mas eleminar o requisito de deslocamento e compartilhamento do mesmo ambiente 
+mas eliminar o requisito de deslocamento e compartilhamento do mesmo ambiente 
 real.
 
 Portanto, neste artigo será proposta a plataforma ARCGP (\textit{Augmented 
@@ -215,12 +216,12 @@ o jogador, ao mesmo tempo que envia os dados da carta e sua posição em relaç�
 ao marcador da mesa para o dispositivo do adversário, que irá, por sua vez, 
 transladar e rotacionar a carta para exibi-la corretamente.
 
-Este artigo está estruturado da seguinte forma: na sessão \ref{rel} serão 
-apresentados trabalhos relacionados; na sessão \ref{metodologia} será 
+Este artigo está estruturado da seguinte forma: na seção \ref{rel} serão 
+apresentados trabalhos relacionados; na seção \ref{metodologia} será 
 apresentada a metodologia utilizada no desenvolvimento da plataforma; na 
-sessão \ref{plataforma}, a plataforma propriamente dita será apresentada em 
-detalhes; em seguida, a sessão \ref{conclusao} trás algumas considerações finais 
-sobre o projeto; por fim, a sessão \ref{trab_fut} trás alguns trabalhos futuros 
+seção \ref{plataforma}, a plataforma propriamente dita será apresentada em 
+detalhes; em seguida, a seção \ref{conclusao} trás algumas considerações finais 
+sobre o projeto; por fim, a seção \ref{trab_fut} trás alguns trabalhos futuros 
 para serem realizados em cima da ARCGP.
 
 \section{Trabalhos Relacionados}
@@ -304,7 +305,9 @@ possuem um custo elevado para os jogadores.
 \section{Metodologia}
 \label{metodologia}
 Para desenvolver essa plataforma será utilizado o jogo \textit{Magic: The 
-Gathering} como exemplo. 
+Gathering} como exemplo, por se tratar de um jogo baseado em turnos e onde 
+o requisito de tempo real não é muito importante: atrasos de até alguns segundos 
+não atrapalham a jogabilidade do jogo. 
 
 Primeiramente, foi realizado um estudo aprofundado do Unity, da linguagem de 
 programação C\# \cite{csharp} e do Vuforia. Após essa etapa, foi elaborada a 
@@ -318,29 +321,86 @@ selecionados os \textit{decks} do campeão e do vice, Joel Larsson e Mike Sigris
 \cite{protour}.
 
 Depois, a aplicação propriamente dita foi desenvolvida utilizando as ferramentas 
-mencionadas e de acordo com os requisitos explanados na sessão \ref{objetivo}.
+mencionadas e de acordo com os requisitos explanados na seção \ref{objetivo}.
 O primeiro passo para o desenvolvimento da aplicação foi o desenvolvimento de 
 um \textit{script} C\# que preparasse as instâncias da aplicação para se 
-conectarem e trocarem mensagens. O segundo foi a preparação de um 
+conectarem e trocarem mensagens. O segundo foi a preparação de um outro 
 \textit{script}, novamente na linguagem C\#, que modificasse a cena adicionando 
-os \textit{frame markers} e suas respectivas cartas. O terceiro passo foi o 
-desenvolvimento do esquema de comunicação para que uma instância comunicasse a 
-outra quais cartas foram colocadas em jogo pelo seu jogador e quais cartas foram 
-removidas de jogo.
+os \textit{frame markers} e suas respectivas cartas em tempo de execução, 
+fazendo a leitura do arquivo de configuração contendo a lista de cartas que 
+compõem o \textit{deck} do jogador. O terceiro passo foi o desenvolvimento do 
+esquema de comunicação para que uma instância comunicasse a outra quais cartas 
+foram colocadas em jogo pelo seu jogador e quais cartas foram removidas de jogo.
 
 No decorrer e após essa etapa, foram feitos diversos testes com dois jogadores 
 para verificar a funcionalidade da ferramenta e se os requisitos foram 
 satisfeitos.
 
 Por fim, a ferramenta foi apresentada à comunidade através da redação deste 
-artigo.
+artigo e de uma apresentação realizada na Universidade Federal Rural de 
+Pernambuco.
 
 \section{A plataforma}
 \label{plataforma}
-Espera-se que, ao final do projeto, esteja desenvolvida uma aplicação capaz de 
-auxiliar dois jogadores a jogar um jogo de cartas mesmo que estejam fisicamente 
-distantes um do outro. A experiência do jogador deverá lembrar, o máximo 
-possível, sua equivalente no mundo real.
+A atual implementação do ARCGP é uma aplicação que se vale da plataforma Unity 
+\cite{unity} para toda a parte da gerência da cena e dos objetos 3D, além da 
+comunicação com os dispositivos dos jogadores adversários. Ela também utiliza a 
+API do Vuforia \cite{vuforia} para a parte de Realidade Aumentada. O Vuforia é 
+um \textit{kit} de desenvolvimento de aplicações de realidade aumentada 
+disponível para diferentes plataformas, inclusive para o Unity através de  um 
+plugin.
+
+A ARCGP é dividida entre dois principais componentes: a cena 3D e os 
+\textit{scripts} de comportamento.
+
+\subsection{Cena 3D}
+\label{cena3d}
+A cena 3D pode ser descrita através da hierarquia montada no Unity. Essa 
+hierarquia está ilustrada na Figura \ref{hierarchy}.
+
+\begin{figure}[t]
+	\caption{Hierarquia da Cena 3D tal como foi montada no Unity 3D}
+	\label{hierarchy}
+	\centering
+	\includegraphics[width=0.25\textwidth]{hierarchy}
+\end{figure}
+
+O primeiro elemento, \textit{World}, do qual todos os outros são filhos, é o 
+responsável por conter dois \textit{scripts} de comportamentos específicos da 
+aplicação. Um deles é o \textit{LoadDeck.cs} que fica responsável por ler o 
+arquivo de configuração e preparar sessenta \textit{frame markers} com as cartas 
+do jogador. O outro é o \textit{Configuration.cs} responsável por carregar todo 
+tipo de configuração que possa ser alterada pelo jogador antes de executar a 
+aplicação. Por exemplo, o endereço na internet, IP, do adversário é carregado 
+por este \textit{script}.
+
+O segundo elemento, a \textit{Directional Light}, é um objeto que vem por padrão 
+nas cenas assim que o Unity as cria. Nenhuma configuração adicional foi feita 
+neste objeto.
+
+O terceiro elemento, a \textit{AR Camera}, é um \textit{prefab} importado do 
+Vuforia. Nele foi configurada a \textit{API Key} da aplicação. Sem esta 
+informação, a ARCGP não seria capaz de utilizar a biblioteca de Realidade 
+Aumentada. Também neste objeto está o \textit{script} de comportamento \textit{
+NetworkEnvironmentShare.cs}. Ele é responsável por toda a parte de comunicação 
+e rede da aplicação. Esse \textit{script} será detalhado na seção seguinte.
+
+Por fim, tem-se o objeto chamado de \textit{Reference}. Esse pode ser chamado de 
+um objeto coringa, pois no seu lugar pode-se ser colocado qualquer \textit{
+prefab} rastreável desde que se substitua o \textit{script} de comportamento 
+\textit{DefaultTrackableEventHandler.cs}, que é padrão da biblioteca Vuforia, 
+pelo \textit{script ReferenceEnvironmentTracker.cs}. O comportamento que esse 
+\textit{script} está responsável por enforçar será detalhado na seção seguinte.
+
+No exemplo testado, foi utilizado um alvo de marcador comum, mas o usuário pode 
+alterar esse objeto colocando um \textit{Image Target prefab} e utilizar uma 
+imagem de sua escolha e possibilitar um \textit{extended tracking}, por exemplo.
+
+\subsection{\textit{Scripts} de comportamento}
+\label{scripts}
+Foram preparados cinco \textit{scripts}, na linguagem C\# para implementar as 
+funcionalidades previstas pelo projeto da ARCGP. Estes serão descritos em 
+detalhes nesta seção.
 
 \section{Conclusão}
 \label{conclusao}
