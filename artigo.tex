@@ -68,6 +68,18 @@
    	note = {Accessed: 2015-09-15}
    }
    
+   @misc {multithreading,
+   	title = {Unity 5 - Multithreading?},
+   	howpublished = {\url{http://answers.unity3d.com/questions/908054/unity-5-multithreading.html}},
+   	note = {Accesssed: 2015-11-16}
+   }
+   
+   @misc{mono,
+   	title = {Unity - Scripting API: MonoBehaviour},
+   	howpublished = {\url{http://docs.unity3d.com/ScriptReference/MonoBehaviour.html}},
+   	note = {Accessed: 2015-11-16}
+   }
+   
    @misc{protour,
    	title = {Magic Origins Pro Tour - Top 8 decklists},
    	howpublished = {\url{http://magic.wizards.com/en/events/coverage/ptori/top-8-decklists-2015-08-01}},
@@ -86,6 +98,12 @@
    	note = {Accessed: 2015-11-15}
    }
    
+   @misc{fifo,
+   	title = {FIFO (computing and eletronics ) - Wikipedia, the free encyclopedia},
+   	howpublished = {\url{https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)}},
+   	note = {Accessed: 2015-11-16}
+   }
+   
    @misc{unity,
    	title = {Unity - Game Engine},
    	howpublished = {\url{http://unity3d.com/pt/}},
@@ -96,6 +114,12 @@
    	title = {Sony's The Eye of Judgement},
    	howpublished = {\url{https://en.wikipedia.org/wiki/The_Eye_of_Judgment}},
    	note = {Accessed: 2015-11-15}
+   }
+   
+   @misc{p2p,
+   	title = {Peer-to-peer - Wikipedia, the free encyclopedia},
+   	howpublished = {https://en.wikipedia.org/wiki/Peer-to-peer},
+   	note = {Accessed: 2015-11-16}
    }
    
    @misc{vuforia,
@@ -350,7 +374,13 @@ um \textit{kit} de desenvolvimento de aplicações de realidade aumentada
 disponível para diferentes plataformas, inclusive para o Unity através de  um 
 plugin.
 
-A ARCGP é dividida entre dois principais componentes: a cena 3D e os 
+A forma como as cartas estão registradas na aplicação é através de arquivos de 
+imagens da carta presentes na pasta "\textit{Resources}" do Unity. Essas imagens 
+serão, mais tarde transformadas em texturas automaticamente. É importante notar 
+que ambos os jogadores precisam ter registradas, dessa forma, todas as cartas 
+que poderão ser usadas por ambos os jogadores.
+
+A ARCGP é dividida em dois principais componentes: a cena 3D e os 
 \textit{scripts} de comportamento.
 
 \subsection{Cena 3D}
@@ -401,6 +431,115 @@ imagem de sua escolha e possibilitar um \textit{extended tracking}, por exemplo.
 Foram preparados cinco \textit{scripts}, na linguagem C\# para implementar as 
 funcionalidades previstas pelo projeto da ARCGP. Estes serão descritos em 
 detalhes nesta seção.
+
+\subsubsection{Configuration.cs}
+\label{config}
+Apesar de ser uma classe que estende \textit{MonoBehaviour} \cite{mono}, este 
+\textit{script} existe para manter as variáveis que devem ser alteradas pelo 
+usuário em um único local. Essas variáveis são: o IP do adversário, informação 
+necessária para se conectar ao dispositivo do outro jogador; e uma 
+\textit{string} descrevendo o \textit{deck} de cartas do jogador. O 
+\textit{deck} descrito no arquivo \textit{Configuration.cs} no formato 
+\textit{string} de identificação da carta, seguido por uma vírgula e, então, o 
+número de de cópias daquela carta no \textit{deck}. A identificação da carta 
+corresponde ao nome do arquivo de imagem da carta presente na pasta 
+\textit{Resources}.
+
+\subsubsection{LoadDeck.cs}
+\label{loadeck}
+Como foi explicado brevemente na seção anterior, esse \textit{script} é o 
+responsável por ler, validar e carregar o \textit{deck} de cartas do jogador.
+Quando as cartas são carregadas, o efeito é a adição de novos 
+\textit{frame markers}, com objetos planos como seus filhos. Para cada plano 
+corresponde uma carta, que é colocada como sua textura. A figura \ref{cardsld} 
+mostra como deve ficar a hierarquia dos objetos depois que o \textit{deck} de 
+cartas é carregado por este \textit{script}.
+
+\begin{figure}[t]
+	\caption{Hierarquia da Cena 3D após o carregamento do \textit{deck}
+		 de cartas}
+	\label{cardsld}
+	\centering
+	\includegraphics[width=0.25\textwidth]{hierarchyloaded}
+\end{figure}
+
+\subsubsection{CardTrackableEventHandler.cs}
+\label{cardtracker}
+Este \textit{script} é o substituto do \textit{DefaultTrackableEventHandler.cs} 
+para marcadores de carta. Este comportamento é adicionado aos 
+\textit{frame markers} assim que são adicionados à cena no \textit{script} 
+mencionado na seção \ref{loadeck}. Contudo, ele não é tão diferente do 
+\textit{script} padrão, pois apenas expõe o \textit{status} do rastreamento 
+como atributo público da classe. Esse atributo é utilizado por outros 
+\textit{scripts} para verificar se a carta deve ser mostrada também na cena do 
+adversário.
+
+\subsubsection{NetworkEnvironmentShare.cs}
+\label{networkenv}
+Este comportamento fica adicionado à câmera do jogo e é o responsável por toda 
+a parte de conexão de rede entre os dois jogadores.
+
+A maior preocupação deste \textit{script} é manter as atividades de rede em 
+outras \textit{threads}, de forma que a comunicação ocorra de forma assíncrona 
+com relação à \textit{thread} principal do jogo que atualiza a cena. De fato, o 
+Unity não permite que \textit{threads} fora da principal utilize os recursos de 
+sua API \cite{multithreading}.
+
+Outra preocupação é implementar a comunicação em uma arquitetura \textit{
+Peer-to-Peer} (P2P) \cite{p2p}, pois um servidor para servir de intermediário 
+entre os dois jogadores não deveria ser requisito para que a aplicação 
+funcionasse. Portanto, duas instâncias da aplicação devem funcionar, do ponto de 
+vista de redes de computadores, como cliente e servidor ao mesmo tempo. Cada um 
+desses papéis sendo executada em uma \textit{thread} diferente. Uma para escutar 
+a porta do servidor, esperando por novas mensagens vindas do adversário e uma 
+\textit{thread} para enviar mensagens geradas pelo \textit{script} do 
+referencial, tratado na subseção seguinte.
+
+Este \textit{script} mantém duas estruturas de dados do tipo FIFO (\textit{First 
+In, First Out}) \cite{fifo}, uma para as mensagens recebidas pela conexão com o 
+adversário, outra para enfileirar as mensagens a serem enviadas para o 
+dispositivo adversário. As duas \textit{threads}, já mencionadas, se mantêm em 
+\textit{loop} verificando se há novas mensagens enfileiradas (para a 
+\textit{thread} responsável por enviar mensagens) ou se há mensagens no 
+\textit{stream} de dados da rede (para a \textit{thread} responsável por receber 
+mensagens).
+
+As demais classes da aplicação, que são executadas na \textit{thread} principal 
+do Unity, alimentam e consumem essas filas de mensagens.
+
+\subsubsection{ReferenceEnvironmentTracker.cs}
+\label{referencetrack}
+Por fim, esse \textit{script} implementa duas tarefas: identificar o tabuleiro 
+do jogo e verificar quais cartas estão na mão do jogador e quais estão em jogo.
+
+A diferença está no fato de que, apesar de ambas precisarem ser exibidas na 
+cena, sobre os marcadores, quando forem rastreadas, apenas as cartas em jogo 
+devem ser enviadas para o adversário visualizar.
+
+Esta distinção é feita da seguinte forma: as cartas que estiverem sendo 
+rastreadas ao mesmo tempo que o marcador referencial devem estar em jogo. 
+Enquanto que as cartas que estiverem sendo rastreadas sem o referencial, devem 
+estar na mão do jogador. Além disso, se o referencial está sendo rastreado, e 
+uma das cartas que estava em jogo não está mais sendo rastreada, então ela 
+deve ter sido removida de jogo, seja qual for o seu destino.
+
+Este \textit{script} pode enfileirar dois tipos de mensagens: uma mensagem com 
+código \textit{see}, que significa que o adversário deve ver a carta passada 
+como parâmetro, ou com código \textit{unsee}, que significa que o adversário 
+deve parar de enxergar a carta passada como parâmetro. Como mencionado, 
+a mensagem de código \textit{see} deve ter como parâmetro a carta a ser 
+visualizada, mas além deste, devem ser informadas a posição e a rotação com as 
+quais a carta deve ser desenhada na cena de destino.
+
+Por fim, é também de responsabilidade desse \textit{script} verificar a fila de 
+mensagens recebidas e adicionar as cartas especificadas como parâmetro, nas 
+posição e rotação requisitadas e colocá-las como seus filhos dentro da 
+hierarquia de objetos do Unity para que elas somente sejam exibidas quando ele 
+estiver sendo rastreado (\textit{extended tracking} também é possível).
+
+\section{Resultados}
+\label{resultados}
+Aqui ficam os resultados do projeto
 
 \section{Conclusão}
 \label{conclusao}
