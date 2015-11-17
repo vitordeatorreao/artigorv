@@ -68,6 +68,12 @@
    	note = {Accessed: 2015-09-15}
    }
    
+   @misc{android,
+   	title = {Android},
+   	howpublished = {\url{https://www.android.com/}},
+   	note = {Accessed: 2015-11-17}
+   }
+   
    @misc {multithreading,
    	title = {Unity 5 - Multithreading?},
    	howpublished = {\url{http://answers.unity3d.com/questions/908054/unity-5-multithreading.html}},
@@ -539,20 +545,113 @@ estiver sendo rastreado (\textit{extended tracking} também é possível).
 
 \section{Resultados}
 \label{resultados}
-Aqui ficam os resultados do projeto
+Uma vez que a plataforma foi desenvolvida e testada, o resultado observado foi 
+a satisfação dos requisitos elencados na seção \ref{objetivo}.
 
-\section{Conclusão}
-\label{conclusao}
-Neste artigo, foi descrito o projeto da Plataforma para Jogos de Cartas com 
-Realidade Aumentada. Foram explicitados seus objetivos, metodologia, resultados 
-esperados e o cronograma para conclusão do projeto.
+Um pequeno problema de usabilidade observado para o usuário leigo é a 
+necessidade de configuração, do IP do adversário e do \textit{deck} de cartas, 
+antes de compilar a aplicação, seja para Android \cite{android} ou para Desktop. 
+O jogador também precisa imprimir os marcadores, disponibilizados no site do 
+Vuforia, e recortá-los para utilizá-los no jogo.
 
-Além disso, foram levantados alguns trabalhos com matérias parecidas e foram 
-esclarecidas as diferentes entre eles e o ARCGP.
+Exportando para a plataforma Android \cite{android}, ao rodar o aplicativo, a 
+aplicação irá imediatamente tentar conectar o dispositivo com o do jogador 
+adversário. O jogador pode posicionar o marcador com identificador 1 no centro 
+da superfície onde deseja jogar. A partir de então, basta posicionar os 
+marcadores na superfície quando desejar colocar as respectivas cartas em jogo e 
+prosseguir com a partida como faria com o jogo tradicional.
+
+Foram separadas algumas imagens, tiradas diretamente dos dispositivos, que 
+ilustram brevemente a aplicação sendo executada.
+
+A figura \ref{owntablereal} mostra um possível tabuleiro sem os objetos virtuais 
+adicionados pela aplicação, ou seja, trata-se de uma imagem puramente real.
+
+\begin{figure}[b]
+	\caption{Tabuleiro visualizado sem a aplicação de realidade aumentada}
+	\label{owntablereal}
+	\centering
+	\includegraphics[width=0.25\textwidth]{owntablereal}
+\end{figure}
+
+A figura \ref{owntableaug}, por sua vez, mostra o mesmo momento com a realidade 
+aumentada. Note que tanto esta figura quanto a figura \ref{owntablereal} não 
+possuem cartas do adversário transmitidas para o tabuleiro mostrado.
+
+Por fim, a figura \ref{enemytable} mostra um tabuleiro com três cartas virtuais 
+sendo exibidas. É importante notar que o cenário dessa figura não é o mesmo 
+mostrado nesta figura.
 
 \section{Trabalhos Futuros}
 \label{trab_fut}
-Aqui são apresentados alguns trabalhos.
+Nesta seção, serão apresentadas algumas possíveis melhorias para a plataforma
+proposta. Estas não foram implementadas neste primeiro momento por não terem 
+sido previstas no planejamento e por conta da restrições no cronograma.
+
+Em um primeiro momento, seria importante se dedicar à simplificação da 
+arquitetura da plataforma. É possível modificar os \textit{scripts} de 
+comportamento que foram desenvolvidos para que fiquem menos interligados à API 
+do Vuforia, tornando-os mais modulares e criando mais oportunidades de reuso do 
+código.
+
+Foi verificado, durante os testes, que um esquema mais sofisticado para 
+identificação de quais cartas estão em jogo e quais ainda não foram jogadas, por 
+parte da aplicação, aumentaria a jogabilidade. Um possível esquema seria adição 
+de mais um marcador ao qual não estaria associado nenhuma carta. Esse marcador 
+funcionaria de forma similar ao Referencial descrito na seção \ref{plataforma}: 
+os \textit{frame markers}, associados a cartas, que estivessem sendo rastreados 
+ao mesmo tempo que este novo marcador seriam consideradas como estando na 
+mão do jogador. Isso ajudaria a aplicação a ter uma contagem das cartas na mão 
+do jogador e poderia transmitir essa informação para o adversário, pois ela é 
+importante em alguns jogos de cartas.
+
+Por fim, poderia-se criar uma aplicação exclusiva para o jogo \textit{Magic: The 
+Gathering}. Essa aplicação poderia implementar regras de jogo para garantir a um 
+jogador que seu adversário não está agindo de forma ilegal. Isso no entanto, 
+adiciona complexidade para o entendimento da aplicação por parte do usuário e 
+remove um pouco da sua familiaridade com a forma de jogar.
+
+\section{Conclusão}
+\label{conclusao}
+Neste artigo, foi descrito o projeto da ARCGP, uma plataforma para jogos de 
+cartas com realidade aumentada. Primeiramente foi apresentada uma falta de 
+trabalhos com a preocupação de possibilitar o jogo de cartas de forma remota e 
+se valendo da realidade aumentada para manter a familiaridade da mecânica de 
+jogo. Os trabalhos encontrados com maior similaridade foram descritos e as 
+diferenças para a ARCGP foram esclarecidas.
+
+\begin{figure}[t]
+	\caption{Tabuleiro visualizado com a aplicação de realidade aumentada}
+	\label{owntableaug}
+	\centering
+	\includegraphics[width=0.25\textwidth]{owntableaug}
+\end{figure}
+
+Depois de descrever os objetivos e a metodologia, este artigo descreveu, com 
+riqueza de detalhes, a implementação da plataforma utilizando o motor de jogos, 
+Unity, com a API do Vuforia.
+
+Em seguida foram descritas e ilustradas as capacidades da aplicação 
+desenvolvida, bem como suas limitações.
+
+Por fim, foram apresentados trabalhos a serem feitos para incrementar a 
+plataforma e a aplicação.
+
+A plataforma proposta e implementada se mostrou capaz de auxiliar jogadores 
+a jogarem jogos de cartas sem precisarem se deslocar. Além disso, a aplicação 
+resultante é uma alternativa prática para os jogadores, já que pode ser baixada 
+e compilada para seus celulares portáteis. Assim, ela é de baixo custo e não 
+necessita de aparelhos, ferramentas ou dispositivos com dificuldades de 
+aquisição e mobilidade.
+
+\begin{figure}[t]
+	\caption{Tabuleiro visualizado pelo jogador com realidade aumentada. Note 
+		que as três cartas exibidas são provenientes do adversário, já que não 
+		há marcadores para elas sendo rastreados.}
+	\label{enemytable}
+	\centering
+	\includegraphics[width=0.25\textwidth]{enemytable}
+\end{figure}
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibi}
