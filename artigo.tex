@@ -170,7 +170,7 @@
 \begin{abstract}
 	Os jogos do mundo real e virtual possuem suas próprias vantagens distintas. 
 	A realidade aumentada nos permite combinar o melhor dos dois mundos e criar 
-	novas formas de jogar. Esta proposta pretende introduzir o ARCGP (Plataforma 
+	novas formas de jogar. Este artigo pretende introduzir o ARCGP (Plataforma 
 	para jogos de cartas com realidade aumentada). A ideia é prover aos 
 	jogadores a experiência dos jogos originais, porém com a possibilidade de 
 	jogar remotamente, sem ter de sentar à frente do computador e com baixo 
@@ -185,20 +185,20 @@
 
 \section{Introdução}
 Realidade misturada combina os conteúdos do mundo real com a imaginação virtual.
-A realidade aumentada (AR) é um subconjunto da realidade misturada, onde o 
-conteúdo digital são sobrepostos aos objetos reais do mundo. Aplicações de 
-realidade aumentada suplementam o mundo real com objetos virtuais, de forma que 
-o conteúdo gerado pelo computador é adicionado ao ambiente real de forma 
+A realidade aumentada (AR) é um subconjunto da realidade misturada, onde os 
+conteúdos digitais são sobrepostos aos objetos reais do mundo. Aplicações de 
+realidade aumentada suplementam o mundo real com objetos virtuais, fazendo com 
+que o conteúdo gerado pelo computador seja adicionado ao ambiente real de forma 
 interativa e em tempo real \cite{burdea2003virtual}.
 
 Essas propriedades da realidade aumentada provêm melhorias fascinantes para os 
 jogos do mundo real, fazendo-os mais agradáveis e atrativos 
-\cite{Lam:2006:AAR:1128923.1128987}. Jogos de cartas são exemplos de jogos que 
-podem usufruir das vantagens da Realidade Aumentada. Jogos, como \textit{Magic: 
-The Gathering} \cite{magic}, precisam de, no mínimo, dois jogadores, mas não é 
+\cite{Lam:2006:AAR:1128923.1128987}. Jogos de cartas são exemplos que podem 
+usufruir das vantagens da Realidade Aumentada. Jogos, como \textit{Magic: The 
+Gathering} \cite{magic}, precisam de, no mínimo, dois jogadores, mas não é 
 sempre fácil reunir-se com outras pessoas para jogar, de forma que uma 
-plataforma que permitisse a dois jogadores disputar uma partida de forma 
-remota criaria mais oportunidades de jogo.
+plataforma que permitisse a dois jogadores disputar uma partida remotamente 
+criaria mais oportunidades de jogo.
 
 Já houveram implementações de \textit{Magic} para computador e dispositivos 
 móveis \cite{magic_duels}. No entanto, as plataformas nos quais essas 
@@ -209,10 +209,10 @@ Outras implementações, tais como \cite{joao}, embora mantenham a forma
 tradicional do jogo, necessitam que os dois jogadores estejam no mesmo local 
 físico, não os permitindo jogar de forma remota.
 
-A plataforma deveria, então, manter elementos das partidas reais de forma 
-que o jogador tivesse a impressão de estar jogando o mesmo jogo, da mesma forma, 
-mas eliminar o requisito de deslocamento e compartilhamento do mesmo ambiente 
-real.
+Uma plataforma ideal deveria, então, manter elementos das partidas reais e fazer 
+com que o jogador tenha a impressão de estar jogando o mesmo jogo, da mesma 
+forma, porém eliminando o requisito de deslocamento e compartilhamento do mesmo 
+ambiente real.
 
 Portanto, neste artigo será proposta a plataforma ARCGP (\textit{Augmented 
 Reality Card Game Platform}). A plataforma consistirá em uma aplicação 
@@ -220,11 +220,11 @@ Unity \cite{unity} utilizando a API do Vuforia \cite{vuforia}.
 
 \subsection{Objetivo}
 \label{objetivo}
-O objetivo do projeto ARCGP é utilizar o Unity e o Vuforia criar uma plataforma 
-de realidade aumentada onde dois jogadores possam disputar uma partida de um 
-jogo de cartas sem a necessidade de estarem no mesmo ambiente. ARCGP deve 
-reconhecer as cartas em jogo no tabuleiro de um jogador e reproduzi-las através 
-de objetos virtuais para o oponente.
+O objetivo do projeto ARCGP é utilizar o Unity e o Vuforia para criar uma 
+plataforma de realidade aumentada onde dois jogadores possam disputar uma 
+partida de um jogo de cartas sem a necessidade de estarem no mesmo ambiente. 
+A ARCGP deve reconhecer as cartas em jogo no tabuleiro de um jogador e 
+reproduzi-las através de objetos virtuais para o oponente.
 
 O ARCGP deve ser uma plataforma simples, que ocupe pouco espaço físico, que não 
 apresente um esforço desnecessário de montagem e que seja de baixo custo.
@@ -234,14 +234,10 @@ utilizados marcadores. Os jogadores terão de registrar suas cartas previamente,
 momento no qual será feito mapeamento entre as cartas e os identificadores de 
 marcadores disponíveis no Vuforia.
 
-Uma imagem será selecionada como alvo para um \textit{extended tracking} 
-(rastreamento estendido, em português) e será colocada por cada jogador na sua 
-mesa de jogo.
-
 A aplicação deverá ser capaz de se conectar ao dispositivo do adversário. E, a 
 partir de então, deverá rastrear os marcadores e exibir para o jogador a imagem 
 da carta mapeada no identificador do marcador em questão. Quando este marcador 
-for colocado sobre a mesa de jogo, o ARCGP deverá exibir a imagem da carta para 
+for colocado sobre a mesa de jogo, a ARCGP deverá exibir a imagem da carta para 
 o jogador, ao mesmo tempo que envia os dados da carta e sua posição em relação 
 ao marcador da mesa para o dispositivo do adversário, que irá, por sua vez, 
 transladar e rotacionar a carta para exibi-la corretamente.
@@ -250,9 +246,9 @@ Este artigo está estruturado da seguinte forma: na seção \ref{rel} serão
 apresentados trabalhos relacionados; na seção \ref{metodologia} será 
 apresentada a metodologia utilizada no desenvolvimento da plataforma; na 
 seção \ref{plataforma}, a plataforma propriamente dita será apresentada em 
-detalhes; em seguida, a seção \ref{conclusao} trás algumas considerações finais 
-sobre o projeto; por fim, a seção \ref{trab_fut} trás alguns trabalhos futuros 
-para serem realizados em cima da ARCGP.
+detalhes; em seguida, a seção \ref{trab_fut} trás alguns trabalhos futuros 
+para serem realizados em cima da ARCGP; por fim, a seção \ref{conclusao} trás 
+algumas considerações finais sobre o projeto.
 
 \section{Trabalhos Relacionados}
 \label{rel}
@@ -267,14 +263,14 @@ podem jogar de forma remota, online, ou em um \textit{multiplayer} presencial.
 Deve-se notar que não é possível jogar outros jogos de cartas com esse recurso.
 
 Já a Nintendo lançou o \textit{AR Games} \cite{3ds} que é uma compilação de 
-mini-jogos e ferramentas simples que vêm pré-instaladas no portátil Nintendo 
+mini-jogos e ferramentas simples que vêm pré-instaladas no portátil, o Nintendo 
 3DS. Junto vêm seis cartas, cinco delas com os principais personagens da 
 produtora e uma com uma interrogação. Essas cartas podem ser utilizadas por 
 diferentes jogos para incrementar a experiência do usuário.
 
 Outros trabalhos realizados envolvendo jogos de cartas com realidade aumentada 
 trabalham em cima do cenário onde dois jogadores estão no mesmo ambiente e focam 
-trazer a imaginação do jogador para a realidade através da sobreposição de 
+em trazer a imaginação do jogador para a realidade através da sobreposição de 
 objetos virtuais. As plataformas propostas, no entanto, requerem um hardware 
 específico e, muitas vezes, de alto custo.
 
@@ -294,7 +290,7 @@ aspectos da interação social e privacidade. O sistema consiste de um
 jogador, além de um servidor que roda a simulação do jogo. O HMD não bloqueia 
 totalmente a visão do ambiente, permitindo a um jogador se comunicar com o outro 
 através de gestos, e os elementos virtuais exibidos no HMD permitem que cada 
-usuário tenho uma visão diferente do jogo, garantindo a privacidade.
+usuário tenha uma visão diferente do jogo, garantindo a privacidade.
 
 Assim, \cite{Szalavari:1998:CGA:293701.293740} apresenta um sistema com uma 
 aplicação diferente da plataforma proposta neste artigo já que ele visa simular 
@@ -334,37 +330,40 @@ possuem um custo elevado para os jogadores.
 
 \section{Metodologia}
 \label{metodologia}
-Para desenvolver essa plataforma será utilizado o jogo \textit{Magic: The 
-Gathering} como exemplo, por se tratar de um jogo baseado em turnos e onde 
-o requisito de tempo real não é muito importante: atrasos de até alguns segundos 
-não atrapalham a jogabilidade do jogo. 
+Para desenvolver esta plataforma, primeiramente, foi realizado um estudo 
+aprofundado do Unity, da linguagem de programação C\# \cite{csharp} e do 
+Vuforia. Após essa etapa, foi elaborada a arquitetura necessária para tornar a 
+aplicação viável.
 
-Primeiramente, foi realizado um estudo aprofundado do Unity, da linguagem de 
-programação C\# \cite{csharp} e do Vuforia. Após essa etapa, foi elaborada a 
-arquitetura necessária para tornar a aplicação viável.
+Depois, a plataforma propriamente dita foi desenvolvida utilizando as 
+ferramentas mencionadas e de acordo com os requisitos explanados na seção 
+\ref{objetivo}. O primeiro passo para a implementação da plataforma foi o 
+desenvolvimento de um \textit{script} C\# que preparasse as instâncias da 
+aplicação para se conectarem e trocarem mensagens. O segundo foi a preparação de 
+um outro \textit{script}, novamente na linguagem C\#, que modificasse a cena 
+adicionando os \textit{frame markers} e suas respectivas cartas em tempo de 
+execução, fazendo a leitura do arquivo de configuração contendo a lista de 
+cartas que compõem o \textit{deck} do jogador. O terceiro passo foi o 
+desenvolvimento do esquema de comunicação para que uma instância comunicasse a 
+outra quais cartas foram colocadas em jogo pelo seu jogador e quais cartas foram 
+removidas de jogo, além de processar as mensagens recebidas e posicionar as 
+cartas do adversário corretamente no tabuleiro.
 
-Em seguida, foi necessário criar um banco de dados para testes com algumas 
+Para realizar os testes da plataforma, foi utilizado o jogo \textit{Magic: The 
+Gathering} como exemplo de aplicação, por se tratar de um jogo baseado em turnos 
+e onde o requisito de tempo real não é muito importante: atrasos de até alguns 
+segundos não atrapalham a jogabilidade. 
+
+Assim, foi necessário criar um banco de dados para testes com algumas 
 cartas. Existem diversos \textit{websites} que disponibilizam imagens de cartas, 
 como por exemplo, \cite{magic_cards}. Foram montados dois \textit{decks} para 
 os testes, ambos oriundos do \textit{Pro Tour Magic Origins}. Foram 
 selecionados os \textit{decks} do campeão e do vice, Joel Larsson e Mike Sigrist 
 \cite{protour}.
 
-Depois, a aplicação propriamente dita foi desenvolvida utilizando as ferramentas 
-mencionadas e de acordo com os requisitos explanados na seção \ref{objetivo}.
-O primeiro passo para o desenvolvimento da aplicação foi o desenvolvimento de 
-um \textit{script} C\# que preparasse as instâncias da aplicação para se 
-conectarem e trocarem mensagens. O segundo foi a preparação de um outro 
-\textit{script}, novamente na linguagem C\#, que modificasse a cena adicionando 
-os \textit{frame markers} e suas respectivas cartas em tempo de execução, 
-fazendo a leitura do arquivo de configuração contendo a lista de cartas que 
-compõem o \textit{deck} do jogador. O terceiro passo foi o desenvolvimento do 
-esquema de comunicação para que uma instância comunicasse a outra quais cartas 
-foram colocadas em jogo pelo seu jogador e quais cartas foram removidas de jogo.
-
-No decorrer e após essa etapa, foram feitos diversos testes com dois jogadores 
-para verificar a funcionalidade da ferramenta e se os requisitos foram 
-satisfeitos.
+No decorrer e após a etapa de desenvolvimento, foram feitos diversos testes com 
+dois jogadores para verificar a funcionalidade da ferramenta e se os requisitos 
+foram satisfeitos.
 
 Por fim, a ferramenta foi apresentada à comunidade através da redação deste 
 artigo e de uma apresentação realizada na Universidade Federal Rural de 
@@ -372,7 +371,7 @@ Pernambuco.
 
 \section{A plataforma}
 \label{plataforma}
-A atual implementação do ARCGP é uma aplicação que se vale da plataforma Unity 
+A atual implementação da ARCGP é uma aplicação que se vale da plataforma Unity 
 \cite{unity} para toda a parte da gerência da cena e dos objetos 3D, além da 
 comunicação com os dispositivos dos jogadores adversários. Ela também utiliza a 
 API do Vuforia \cite{vuforia} para a parte de Realidade Aumentada. O Vuforia é 
@@ -381,8 +380,8 @@ disponível para diferentes plataformas, inclusive para o Unity através de  um
 plugin.
 
 A forma como as cartas estão registradas na aplicação é através de arquivos de 
-imagens da carta presentes na pasta "\textit{Resources}" do Unity. Essas imagens 
-serão, mais tarde transformadas em texturas automaticamente. É importante notar 
+imagens da carta presentes na pasta \textit{Resources} do Unity. Essas imagens 
+serão, mais tarde, transformadas em texturas automaticamente. É importante notar 
 que ambos os jogadores precisam ter registradas, dessa forma, todas as cartas 
 que poderão ser usadas por ambos os jogadores.
 
@@ -404,7 +403,7 @@ hierarquia está ilustrada na Figura \ref{hierarchy}.
 O primeiro elemento, \textit{World}, do qual todos os outros são filhos, é o 
 responsável por conter dois \textit{scripts} de comportamentos específicos da 
 aplicação. Um deles é o \textit{LoadDeck.cs} que fica responsável por ler o 
-arquivo de configuração e preparar sessenta \textit{frame markers} com as cartas 
+arquivo de configuração e preparar todos os \textit{frame markers} com as cartas 
 do jogador. O outro é o \textit{Configuration.cs} responsável por carregar todo 
 tipo de configuração que possa ser alterada pelo jogador antes de executar a 
 aplicação. Por exemplo, o endereço na internet, IP, do adversário é carregado 
@@ -426,7 +425,7 @@ um objeto coringa, pois no seu lugar pode-se ser colocado qualquer \textit{
 prefab} rastreável desde que se substitua o \textit{script} de comportamento 
 \textit{DefaultTrackableEventHandler.cs}, que é padrão da biblioteca Vuforia, 
 pelo \textit{script ReferenceEnvironmentTracker.cs}. O comportamento que esse 
-\textit{script} está responsável por enforçar será detalhado na seção seguinte.
+\textit{script} está responsável por reforçar será detalhado na seção seguinte.
 
 No exemplo testado, foi utilizado um alvo de marcador comum, mas o usuário pode 
 alterar esse objeto colocando um \textit{Image Target prefab} e utilizar uma 
@@ -445,11 +444,12 @@ Apesar de ser uma classe que estende \textit{MonoBehaviour} \cite{mono}, este
 usuário em um único local. Essas variáveis são: o IP do adversário, informação 
 necessária para se conectar ao dispositivo do outro jogador; e uma 
 \textit{string} descrevendo o \textit{deck} de cartas do jogador. O 
-\textit{deck} descrito no arquivo \textit{Configuration.cs} no formato 
-\textit{string} de identificação da carta, seguido por uma vírgula e, então, o 
-número de de cópias daquela carta no \textit{deck}. A identificação da carta 
-corresponde ao nome do arquivo de imagem da carta presente na pasta 
-\textit{Resources}.
+\textit{deck} descrito no arquivo \textit{Configuration.cs}, no formato 
+\textit{string}, contém diversas linhas. Para cada linha corresponde uma carta 
+única do \textit{deck}. Assim, cada linha possui a identificação da carta, 
+seguido por uma vírgula e, então, o número de de cópias daquela carta presentes 
+no \textit{deck}. A identificação da carta corresponde ao nome do arquivo de 
+imagem da carta presente na pasta \textit{Resources}.
 
 \subsubsection{LoadDeck.cs}
 \label{loadeck}
@@ -486,7 +486,7 @@ Este comportamento fica adicionado à câmera do jogo e é o responsável por to
 a parte de conexão de rede entre os dois jogadores.
 
 A maior preocupação deste \textit{script} é manter as atividades de rede em 
-outras \textit{threads}, de forma que a comunicação ocorra de forma assíncrona 
+\textit{threads} separadas, para que a comunicação ocorra de forma assíncrona 
 com relação à \textit{thread} principal do jogo que atualiza a cena. De fato, o 
 Unity não permite que \textit{threads} fora da principal utilize os recursos de 
 sua API \cite{multithreading}.
@@ -515,8 +515,10 @@ do Unity, alimentam e consumem essas filas de mensagens.
 
 \subsubsection{ReferenceEnvironmentTracker.cs}
 \label{referencetrack}
-Por fim, esse \textit{script} implementa duas tarefas: identificar o tabuleiro 
-do jogo e verificar quais cartas estão na mão do jogador e quais estão em jogo.
+Por fim, esse \textit{script} implementa três tarefas: identificar o tabuleiro 
+do jogo, verificar quais cartas estão na mão do jogador e quais estão em jogo e, 
+finalmente, identificar quais cartas estão no campo do adversário e adicioná-las 
+a cena 3D.
 
 A diferença está no fato de que, apesar de ambas precisarem ser exibidas na 
 cena, sobre os marcadores, quando forem rastreadas, apenas as cartas em jogo 
@@ -543,21 +545,43 @@ posição e rotação requisitadas e colocá-las como seus filhos dentro da
 hierarquia de objetos do Unity para que elas somente sejam exibidas quando ele 
 estiver sendo rastreado (\textit{extended tracking} também é possível).
 
+É importante perceber que, embora o jogo \textit{Magic: The Gathering} tenha 
+sido usado como exemplo durante o desenvolvimento para os testes, não existe 
+nenhum \textit{script} que seja dependente de condições ou regras exclusivas ao 
+jogo. Um usuário da plataforma pode, se assim desejar, selecionar um objeto 
+neutro para ser exibido quando o referencial for rastreado e utilizar imagens de 
+um baralho tradicional como cartas.
+
+É importante distinguir a plataforma da aplicação. Enquanto a primeira se refere 
+ao conjunto de ferramentas desenvolvidas para possibilitar uma partida de 
+qualquer jogo de cartas, a segunda é uma prova de conceito da ARCGP, que 
+implementa uma aplicação da ARCGP para o jogo \textit{Magic: The Gathering}.
+
 \section{Resultados}
 \label{resultados}
-Uma vez que a plataforma foi desenvolvida e testada, o resultado observado foi 
-a satisfação dos requisitos elencados na seção \ref{objetivo}.
+
+\begin{figure}[b]
+	\caption{Tabuleiro visualizado sem a aplicação de realidade aumentada}
+	\label{owntablereal}
+	\centering
+	\includegraphics[width=0.25\textwidth]{owntablereal}
+\end{figure}
+
+Uma vez que a plataforma e a aplicação foram desenvolvidas e testadas, o 
+resultado observado foi a satisfação dos requisitos elencados na seção 
+\ref{objetivo}.
 
 Um pequeno problema de usabilidade observado para o usuário leigo é a 
-necessidade de configuração, do IP do adversário e do \textit{deck} de cartas, 
+necessidade de configuração do IP do adversário e do \textit{deck} de cartas, 
 antes de compilar a aplicação, seja para Android \cite{android} ou para Desktop. 
 O jogador também precisa imprimir os marcadores, disponibilizados no site do 
 Vuforia, e recortá-los para utilizá-los no jogo.
 
-Exportando para a plataforma Android \cite{android}, ao rodar o aplicativo, a 
-aplicação irá imediatamente tentar conectar o dispositivo com o do jogador 
-adversário. O jogador pode posicionar o marcador com identificador 1 no centro 
-da superfície onde deseja jogar. A partir de então, basta posicionar os 
+Quando a aplicação (que utiliza a ARCGP para uma partida de \textit{Magic: 
+The Gathering}) é exportada para a plataforma Android \cite{android}, ao rodar o 
+aplicativo, a aplicação tenta imediatamente se conectar ao dispositivo do 
+jogador adversário. O jogador pode posicionar o marcador com identificador 1 no 
+centro da superfície onde deseja jogar. A partir de então, basta posicionar os 
 marcadores na superfície quando desejar colocar as respectivas cartas em jogo e 
 prosseguir com a partida como faria com o jogo tradicional.
 
@@ -567,26 +591,27 @@ ilustram brevemente a aplicação sendo executada.
 A figura \ref{owntablereal} mostra um possível tabuleiro sem os objetos virtuais 
 adicionados pela aplicação, ou seja, trata-se de uma imagem puramente real.
 
-\begin{figure}[b]
-	\caption{Tabuleiro visualizado sem a aplicação de realidade aumentada}
-	\label{owntablereal}
-	\centering
-	\includegraphics[width=0.25\textwidth]{owntablereal}
-\end{figure}
-
 A figura \ref{owntableaug}, por sua vez, mostra o mesmo momento com a realidade 
 aumentada. Note que tanto esta figura quanto a figura \ref{owntablereal} não 
 possuem cartas do adversário transmitidas para o tabuleiro mostrado.
 
 Por fim, a figura \ref{enemytable} mostra um tabuleiro com três cartas virtuais 
 sendo exibidas. É importante notar que o cenário dessa figura não é o mesmo 
-mostrado nesta figura.
+mostrado nas figuras anteriores.
 
 \section{Trabalhos Futuros}
 \label{trab_fut}
 Nesta seção, serão apresentadas algumas possíveis melhorias para a plataforma
 proposta. Estas não foram implementadas neste primeiro momento por não terem 
-sido previstas no planejamento e por conta da restrições no cronograma.
+sido previstas no planejamento e por conta das restrições de cronograma do 
+projeto.
+
+\begin{figure}[t]
+	\caption{Tabuleiro visualizado com a aplicação de realidade aumentada}
+	\label{owntableaug}
+	\centering
+	\includegraphics[width=0.25\textwidth]{owntableaug}
+\end{figure}
 
 Em um primeiro momento, seria importante se dedicar à simplificação da 
 arquitetura da plataforma. É possível modificar os \textit{scripts} de 
@@ -597,19 +622,13 @@ código.
 Foi verificado, durante os testes, que um esquema mais sofisticado para 
 identificação de quais cartas estão em jogo e quais ainda não foram jogadas, por 
 parte da aplicação, aumentaria a jogabilidade. Um possível esquema seria adição 
-de mais um marcador ao qual não estaria associado nenhuma carta. Esse marcador 
+de mais um marcador ao qual não estaria associado qualquer carta. Esse marcador 
 funcionaria de forma similar ao Referencial descrito na seção \ref{plataforma}: 
-os \textit{frame markers}, associados a cartas, que estivessem sendo rastreados 
-ao mesmo tempo que este novo marcador seriam consideradas como estando na 
-mão do jogador. Isso ajudaria a aplicação a ter uma contagem das cartas na mão 
-do jogador e poderia transmitir essa informação para o adversário, pois ela é 
-importante em alguns jogos de cartas.
-
-Por fim, poderia-se criar uma aplicação exclusiva para o jogo \textit{Magic: The 
-Gathering}. Essa aplicação poderia implementar regras de jogo para garantir a um 
-jogador que seu adversário não está agindo de forma ilegal. Isso no entanto, 
-adiciona complexidade para o entendimento da aplicação por parte do usuário e 
-remove um pouco da sua familiaridade com a forma de jogar.
+os \textit{frame markers} de cartas que estivessem sendo rastreados 
+ao mesmo tempo que este novo marcador teriam suas respectivas cartas 
+consideradas como estando na mão do jogador. Isso ajudaria a aplicação a ter uma 
+contagem das cartas na mão do jogador e poderia transmitir essa informação para o 
+adversário, pois ela é importante em alguns jogos de cartas.
 
 \section{Conclusão}
 \label{conclusao}
@@ -620,29 +639,23 @@ se valendo da realidade aumentada para manter a familiaridade da mecânica de
 jogo. Os trabalhos encontrados com maior similaridade foram descritos e as 
 diferenças para a ARCGP foram esclarecidas.
 
-\begin{figure}[t]
-	\caption{Tabuleiro visualizado com a aplicação de realidade aumentada}
-	\label{owntableaug}
-	\centering
-	\includegraphics[width=0.25\textwidth]{owntableaug}
-\end{figure}
-
 Depois de descrever os objetivos e a metodologia, este artigo descreveu, com 
 riqueza de detalhes, a implementação da plataforma utilizando o motor de jogos, 
 Unity, com a API do Vuforia.
 
-Em seguida foram descritas e ilustradas as capacidades da aplicação 
-desenvolvida, bem como suas limitações.
+Em seguida, foram descritas e ilustradas as capacidades da plataforma e da 
+aplicação desenvolvidas, bem como suas limitações.
 
 Por fim, foram apresentados trabalhos a serem feitos para incrementar a 
-plataforma e a aplicação.
+plataforma.
 
 A plataforma proposta e implementada se mostrou capaz de auxiliar jogadores 
-a jogarem jogos de cartas sem precisarem se deslocar. Além disso, a aplicação 
-resultante é uma alternativa prática para os jogadores, já que pode ser baixada 
-e compilada para seus celulares portáteis. Assim, ela é de baixo custo e não 
-necessita de aparelhos, ferramentas ou dispositivos com dificuldades de 
-aquisição e mobilidade.
+a disputarem partidas de jogos de cartas sem precisarem se deslocar. Além disso, 
+as aplicações em potencial que podem ser resultantes da plataforma são uma 
+alternativa prática para os jogadores, já que pode ser baixada e compilada para 
+seus celulares portáteis. Assim, ela é de baixo custo e não necessita de 
+aparelhos, ferramentas ou dispositivos com dificuldades de aquisição e 
+mobilidade.
 
 \begin{figure}[t]
 	\caption{Tabuleiro visualizado pelo jogador com realidade aumentada. Note 
